@@ -1,0 +1,38 @@
+# Rewrite the guardian code in the code below
+#
+# file = input('Enter file name: ')
+# try :
+#     fhand = open(file)
+# except:
+#     print('File name not found. Please enter a new file name')
+#     quit()
+# count = 0
+# for line in fhand:
+#     words = line.split()
+#     # print('Debug:', words)
+#     if len(words) == 0:
+#         continue
+#     if words[0] != 'From':
+#         continue
+#     # print(words)
+#     print(words[2])
+#
+# without the two if statements. Instead, use a compound logical expression using
+# the or logical operator with a single if statement.
+
+
+file = input('Enter file name: ')
+try:
+    fhand = open(file)
+except:
+    print('File name not found. Please enter a new file name')
+    quit()
+count = 0
+for line in fhand:
+    words = line.split()
+    # print('Debug:', words)
+    if len(words) == 0 or words[0] != 'From':
+        continue
+    # print(words)
+    count = count + 1
+    print(count, words[2])

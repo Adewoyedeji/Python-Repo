@@ -1,0 +1,43 @@
+# Write a program to look for lines of the form:
+# New Revision: 39772
+# Extract the number from each of the lines using a regular expression
+# and the findall() method. Compute the average of the numbers and
+# print out the average as an integer.
+
+
+# RESULT
+# Enter file:mbox.txt
+# 38549
+# Enter file:mbox-short.txt
+# 39756
+
+import re
+
+count = 0
+sum = 0
+file = input('Enter file name: ')
+
+try:
+    ofile = open(file)
+except:
+    print('File not found. Enter new file')
+    quit()
+
+for line in ofile:
+    line = line.rstrip()
+    # x = re.findall('^New Revision: .*', line)
+    # if len(x) <= 0:
+    #     continue
+    y = re.findall('^New Revision: ([0-9]+)', line)
+    if len(y) <= 0:
+        continue
+    #print(x)
+    #print(y)
+    for num in y:
+        inum =int(num)
+        sum = sum + inum
+        count = count + 1
+        #print(sum)
+        #print(count)
+
+print(int(sum/count))

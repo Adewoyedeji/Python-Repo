@@ -1,0 +1,34 @@
+# Write a program that categorizes each mail message by
+# which day of the week the commit was done. To do this look for lines
+# that start with “From”, then look for the third word and keep a running
+# count of each of the days of the week. At the end of the program print
+# out the contents of your dictionary (order does not matter)
+
+# RESULT:-
+#
+# {'Fri': 20, 'Thu': 6, 'Sat': 1} 
+
+
+newdict = dict()
+
+
+file = input('Enter file name: ')
+
+try:
+    ofile = open(file)
+except:
+    print('File not found. Enter a file name')
+    quit()
+
+for line in ofile:
+    words = line.split()
+    #print(words)
+    if len(words) == 0 or words[0] != 'From' :
+        continue
+    #print(words)
+    if words[2] not in newdict:
+        newdict[words[2]] = 1
+    else:
+        newdict[words[2]] = newdict[words[2]] + 1
+
+print(newdict)
